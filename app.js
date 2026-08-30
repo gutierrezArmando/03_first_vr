@@ -157,6 +157,6 @@ class App {
         this.renderer.render( this.scene, this.camera );
     }
 }
-
+//Ejemplo
 // Exporta la clase App para ser utilizada en otros módulos de JavaScript
 export { App };
