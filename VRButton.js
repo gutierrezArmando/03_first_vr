@@ -9,7 +9,7 @@ class VRButton{
             button.style.height = '40px';
             document.body.appendChild(button);
             
-            navigation.xr.isSessionSupported('immersive-vr').then( supported =>{
+            navigator.xr.isSessionSupported('immersive-vr').then( supported =>{
                 supported ? this.showEnterVR( button ): this.showWebXRNotFound(button);
             });
 		} else {
@@ -19,34 +19,25 @@ class VRButton{
     }
 
 	showEnterVR( button ) {
-
         this.stylizeElement(button, true, 30, true);
         button.style.display = '';
         button.style.right = '20px';
         button.style.width = '80px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
-
-
     }
 
     disableButton( button ) {
-
         button.style.cursor = 'auto';
         button.style.opacity = '0.5';
-        
         button.onmouseenter = null;
         button.onmouseleave = null;
-
         button.onclick = null;
-
     }
 
     showWebXRNotFound( button ) { 
         this.stylizeElement( button, false);
-        
         this.disableButton( button );
-
         button.style.display = '';
         button.style.width = '100%';
         button.style.right = '0px';

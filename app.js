@@ -1,7 +1,8 @@
 // Importación de la biblioteca principal de Three.js
 import * as THREE from 'three';
 // Importación del botón de WebXR para habilitar/deshabilitar el modo VR
-import { VRButton } from 'three/addons/webxr/VRButton.js';
+//import { VRButton } from 'three/addons/webxr/VRButton.js';
+import { VRButton } from './VRButton';
 // Fábrica para cargar y gestionar los modelos visuales de los mandos de VR
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 // Geometría auxiliar para crear un entorno en forma de habitación con líneas (Wireframe Box)
@@ -138,7 +139,8 @@ class App {
         // y lo añade directamente al cuerpo (<body>) de la página web.
         // Este botón detecta si el navegador/dispositivo soporta VR (ej. Oculus Quest, Apple Vision Pro, etc.)
         // y muestra estados como "ENTER VR", "VR NOT SUPPORTED" o "VR NOT ALLOWED".
-        document.body.appendChild( VRButton.createButton( this.renderer ) );
+        //document.body.appendChild( VRButton.createButton( this.renderer ) );
+        const button = new VRButton( this.renderer); 
     }
     
     // Reajusta las dimensiones del canvas y la proyección de la cámara cuando la ventana cambia de tamaño
