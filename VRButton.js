@@ -72,18 +72,18 @@ class VRButton{
             currentSession = session;
 
             // Solicitar pantalla completa en dispositivos móviles
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen().catch((err) => {
-                    console.warn("Fullscreen request denied/failed: ", err);
-                });
-            }
+            // if (document.documentElement.requestFullscreen) {
+            //     document.documentElement.requestFullscreen().catch((err) => {
+            //         console.warn("Fullscreen request denied/failed: ", err);
+            //     });
+            // }
 
             // Intenta bloquear la pantalla en horizontal
-            if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('landscape').catch((err) => {
-                    console.warn("Orientation lock not supported or failed: ", err);
-                });
-            }
+            // if (screen.orientation && screen.orientation.lock) {
+            //     screen.orientation.lock('landscape').catch((err) => {
+            //         console.warn("Orientation lock not supported or failed: ", err);
+            //     });
+            // }
         }
 
         function onSessionEnded(){
@@ -92,16 +92,16 @@ class VRButton{
             button.textContent = 'ENTER VR';
 
             // Salir de pantalla completa
-            if (document.exitFullscreen && document.fullscreenElement) {
-                document.exitFullscreen();
-            }
+            // if (document.exitFullscreen && document.fullscreenElement) {
+            //     document.exitFullscreen();
+            // }
 
             currentSession = null;
 
             // Desbloquear la orientación al salir
-            if (screen.orientation && screen.orientation.unlock) {
-                screen.orientation.unlock();
-            }
+            // if (screen.orientation && screen.orientation.unlock) {
+            //     screen.orientation.unlock();
+            // }
         }
 
         button.onclick = function(){
