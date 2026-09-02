@@ -61,7 +61,7 @@ class App {
         
         // Inicializa el panel de estadísticas (FPS) y lo añade a la interfaz gráfica
         this.stats = new Stats();
-        container.appendChild( this.stats.dom );
+        // container.appendChild( this.stats.dom );
         
         // Métodos de inicialización personalizada y configuración de VR (vacíos para implementar)
         this.initScene();
@@ -140,7 +140,17 @@ class App {
         // Este botón detecta si el navegador/dispositivo soporta VR (ej. Oculus Quest, Apple Vision Pro, etc.)
         // y muestra estados como "ENTER VR", "VR NOT SUPPORTED" o "VR NOT ALLOWED".
         //document.body.appendChild( VRButton.createButton( this.renderer ) );
-        const button = new VRButton( this.renderer); 
+        const button = new VRButton( this.renderer );
+        
+        // Desactivar OrbitControls al entrar a VR
+        this.renderer.xr.addEventListener('sessionstart', () => {
+            this.controls.enabled = false;
+        });
+
+        // Reactivar OrbitControls al salir de VR
+        this.renderer.xr.addEventListener('sessionend', () => {
+            this.controls.enabled = true;
+        });
     }
     
     // Reajusta las dimensiones del canvas y la proyección de la cámara cuando la ventana cambia de tamaño

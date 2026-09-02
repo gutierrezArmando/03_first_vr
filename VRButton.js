@@ -9,7 +9,7 @@ class VRButton{
             button.style.height = '40px';
             document.body.appendChild(button);
             
-            navigator.xr.isSessionSupported('immersive-vr').then( supported =>{
+            navigator.xr.isSessionSupported('immersive-vr').then( (supported) =>{
                 supported ? this.showEnterVR( button ): this.showWebXRNotFound(button);
             });
 		} else {
@@ -51,7 +51,7 @@ class VRButton{
         
         button.onmouseenter = function(){
             button.style.fontSize = '12px';
-            button.textContent = currentSession === null ? 'ENTER VR': 'EXIT VR';
+            button.textContent = (currentSession === null )? 'ENTER VR': 'EXIT VR';
             button.style.opacity = '1';
         };
         
@@ -82,10 +82,9 @@ class VRButton{
 
         button.onclick = function(){
             if (currentSession === null ){
-                const sessionInit = {optionalFeature:['local-floor', 'bounded-floor']};
+                const sessionInit = { optionalFeature: ['local-floor', 'bounded-floor']};
                 navigator.xr.requestSession('immersive-vr', sessionInit).then(
-                    onSessionStarted
-                );
+                    onSessionStarted );
             }else{
                 currentSession.end();
             }
