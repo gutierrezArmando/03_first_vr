@@ -48,8 +48,12 @@ class App {
 		// Ajusta el tamaño del renderizador al ancho y alto de la ventana del navegador
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
         // Configura el espacio de color de salida a sRGB para una representación de color correcta
-        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        //Cambio en render
+        //this.renderer.outputEncoding = THREE.sRGBEncoding;
         
+        // USAR LA NUEVA SINTAXIS:
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+
 		// Inserta el elemento Canvas generado por WebGL dentro del contenedor HTML
 		container.appendChild( this.renderer.domElement );
         
