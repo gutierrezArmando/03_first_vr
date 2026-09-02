@@ -1,7 +1,7 @@
 // Importación de la biblioteca principal de Three.js
 import * as THREE from 'three';
 // Importación del botón de WebXR para habilitar/deshabilitar el modo VR
-//import { VRButton } from 'three/addons/webxr/VRButton.js';
+// import { VRButton } from 'three/addons/webxr/VRButton.js';
 import { VRButton } from './VRButton';
 // Fábrica para cargar y gestionar los modelos visuales de los mandos de VR
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
@@ -143,18 +143,18 @@ class App {
         // y lo añade directamente al cuerpo (<body>) de la página web.
         // Este botón detecta si el navegador/dispositivo soporta VR (ej. Oculus Quest, Apple Vision Pro, etc.)
         // y muestra estados como "ENTER VR", "VR NOT SUPPORTED" o "VR NOT ALLOWED".
-        //document.body.appendChild( VRButton.createButton( this.renderer ) );
+        // document.body.appendChild( VRButton.createButton( this.renderer ) );
         const button = new VRButton( this.renderer );
         
         // Desactivar OrbitControls al entrar a VR
-        this.renderer.xr.addEventListener('sessionstart', () => {
-            this.controls.enabled = false;
-        });
+        // this.renderer.xr.addEventListener('sessionstart', () => {
+        //     this.controls.enabled = false;
+        // });
 
         // Reactivar OrbitControls al salir de VR
-        this.renderer.xr.addEventListener('sessionend', () => {
-            this.controls.enabled = true;
-        });
+        // this.renderer.xr.addEventListener('sessionend', () => {
+        //     this.controls.enabled = true;
+        // });
     }
     
     // Reajusta las dimensiones del canvas y la proyección de la cámara cuando la ventana cambia de tamaño
